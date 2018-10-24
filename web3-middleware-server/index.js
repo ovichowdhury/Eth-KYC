@@ -9,6 +9,9 @@ app.use('/', express.static('public'));
 //for parsing json input from angular
 app.use(bodyParser.json());
 
+// for serving angular
+app.use('/', express.static('public'));
+
 // for using application routes
 app.use('/kyc', accoutRouter);
 
