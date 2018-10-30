@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
-const accoutRouter = require('./routes/accountRouter.js');
+const kycRouter = require('./routes/kycRouter.js');
 
 // for making angular client public 
 app.use('/', express.static('public'));
@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use('/', express.static('public'));
 
 // for using application routes
-app.use('/kyc', accoutRouter);
+app.use('/kyc', kycRouter);
 
 // for handling bad urls
 app.get('*', function(req, res) {
