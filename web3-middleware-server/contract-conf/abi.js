@@ -90,7 +90,12 @@ var kycAbi =  [
       }
     ],
     "name": "createAccount",
-    "outputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"

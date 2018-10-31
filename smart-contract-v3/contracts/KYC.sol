@@ -75,14 +75,15 @@ contract KYC  {
     // Account Related functions
     
     function createAccount(string bankUid, string bankPass, string nid, string name)
-    public uniqueAccount(nid){
+    public uniqueAccount(nid) returns(bool) {
         for(uint i = 0; i < banks.length; i++){
             if(sha256(bytes(banks[i].uid)) == sha256(bytes(bankUid)) && sha256(bytes(banks[i].passcode)) == sha256(bytes(bankPass))){
                 accInfo.accountInit(name, nid, banks[i].name);
                 uniqueNid[nid] = true;
-                break;
+                return true;
             }
         }
+        return false;
     }
     
     // setters

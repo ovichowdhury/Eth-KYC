@@ -25,7 +25,7 @@ kycRouter.post('/get-bank-info', function(req, res){
  */
 
 kycRouter.post('/create-account', function(req, res) {
-    kycServiceInstance.createAccount(
+    let txs = kycServiceInstance.createAccount(
         req.body.bank_uid,
         req.body.bank_passcode,
         req.body.name,
@@ -37,9 +37,18 @@ kycRouter.post('/create-account', function(req, res) {
         req.body.gender
     );
     res.status(200).json({
-        message : "account created"
+        message : "account created",
+        txLog : txs
     });
-})
+    
+});
+
+kycRouter.post('/access-account-info', function(req, res){
+    let accountInfo = kycServiceInstance.getAccountInfo(req.body.bank_uid, req.body.bank_passcode, req.body.nid);
+    if(accountInfo.name == "")
+        res.status(500).json({error : "Check your input"});
+    res.status(200).json(accountInfo);
+});
 
 
 module.exports = kycRouter;
