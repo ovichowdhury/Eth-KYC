@@ -23,6 +23,7 @@ class kycService {
 
         let eGas1 = this.kycContractInstance.createAccount.estimateGas(bankUid, bankPasscode, nid, name);
         let tx1 = this.kycContractInstance.createAccount(bankUid, bankPasscode, nid, name, {value: 0, gas: eGas1 * 10});
+        console.log(tx1);
 
         let eGas2 = this.kycContractInstance.setAccountDOB.estimateGas(bankUid, bankPasscode, nid, dob);
         let tx2 = this.kycContractInstance.setAccountDOB(bankUid, bankPasscode, nid, dob, {value: 0, gas: eGas2 * 10});
